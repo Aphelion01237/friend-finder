@@ -123,7 +123,8 @@
     </select>
 
     <h3><strong>Question 9</strong></h3>
-    <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+    <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
+    </h4>
     <select class="chosen-select" id="q9">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -146,8 +147,11 @@
 
     <br>
     <br>
-    <button type="submit" class="btn btn-dark btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-     Submit</button>
+    <button type="submit" class="btn btn-dark btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
+        aria-hidden="true"></i>
+      Submit</button>
+    <br>
+    <br>
   </div>
 
   <div id="results-modal" class="modal fade" role="dialog">
@@ -190,18 +194,18 @@
       $(selector).chosen(config[selector]);
     }
 
-    $("#submit").on("click", function(event) {
+    $("#submit").on("click", function (event) {
       event.preventDefault();
 
       function validateForm() {
         var isValid = true;
-        $(".form-control").each(function() {
+        $(".form-control").each(function () {
           if ($(this).val() === "") {
             isValid = false;
           }
         });
 
-        $(".chosen-select").each(function() {
+        $(".chosen-select").each(function () {
 
           if ($(this).val() === "") {
             isValid = false;
@@ -228,7 +232,7 @@
           ]
         };
 
-        $.post("/api/friends", userData, function(data) {
+        $.post("/api/friends", userData, function (data) {
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
           $("#results-modal").modal("toggle");
